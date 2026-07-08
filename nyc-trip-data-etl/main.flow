@@ -1,0 +1,9 @@
+# henkan_workshop / nyc-trip-data-etl / main.flow
+name: nyc-trip-data-etl
+type: flow
+description: "New York Taksi verilerini işleyen uçtan uca Medallion Pipeline projesi"
+
+subflows:
+  - path: nyc-trip-data-etl/bronze.subflow
+  - path: nyc-trip-data-etl/silver.subflow
+  

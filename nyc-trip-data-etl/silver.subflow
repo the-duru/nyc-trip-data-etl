@@ -1,0 +1,19 @@
+# henkan_workshop / nyc-trip-data-etl / silver.subflow
+
+- name: build-dim-zones
+  type: transform
+  config:
+    target: duckdb
+    sql_file: "nyc-trip-data-etl/sql/s_silver_build_dim_zones.sql"
+  dependsOn:
+    - get-green-taxi-trip-data # Önce lokasyon verisi hazır olmalı
+
+- name: build-fact-trips
+  type: transform
+  config:
+    target: duckdb
+    sql_file: "nyc-trip-data-etl/sql/s_silver_build_fact_trips.sql"
+  dependsOn:
+    - get-yellow-taxi-trip-data
+    - build-dim-zones # Lokasyon tablosu (DIM) bitmeden satış tablosu (FACT) kurulamaz!
+    

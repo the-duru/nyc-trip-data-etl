@@ -1,0 +1,13 @@
+# henkan_workshop / nyc-trip-data-etl / bronze.subflow
+
+- name: get-green-taxi-trip-data
+  type: extract
+  config:
+    target: duckdb
+    sql_file: "nyc-trip-data-etl/sql/s_bronze_extr_green_taxi_trips.sql"
+
+- name: get-yellow-taxi-trip-data
+  type: extract
+  config:
+    target: duckdb
+    sql_file: "nyc-trip-data-etl/sql/s_bronze_extr_yellow_taxi_trips.sql"
